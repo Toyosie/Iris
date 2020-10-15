@@ -90,7 +90,4 @@ wcwidth==0.2.5
 webencodings==0.5.1
 Werkzeug==1.0.1
 wrapt==1.11.2
-mkl==2020.2
-mkl-service==2.3.0
-mkl_fft==1.2.0
-mkl_random==1.1.1
+
