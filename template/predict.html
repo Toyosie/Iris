@@ -1,0 +1,26 @@
+ <html>
+     <body bgcolor="grey">
+
+        <center>
+            <h1 style="color: aliceblue;"> PREDICTION: </h1>
+
+        {%if data == 0%}
+        <h2 style="color: aliceblue;" >Iris-Setosa</h2>
+        <img src="/static/img/iris-setosa.jpg">
+
+        {%elif data == 1%}
+        <h2 style="color: aliceblue;"  >Iris-Versicolour</h2>
+        <img src="/static/img/Iris-versicolor.jpg">
+
+        {%else%}
+        <h2 style="color: aliceblue;"  > Iris-Virginica</h2>
+        <img src="/static/img/iris-virginica.jpeg">
+    
+        {%endif%}
+            <br>
+            <br>
+        <a style="color: aliceblue;"  href="/home">Go back to home page</a>
+        </center>
+
+     </body>
+ </html>

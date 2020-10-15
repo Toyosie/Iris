@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width"/>
+        <title>Predict your Iris specie</title>
+    </head>
+
+<!-- .................................................................. -->
+    <body style="height:100%; background-image: url(/static/img/background.jpg); background-size:cover;background-repeat: no-repeat;background-position:center;">
+        <br>
+        <div>
+        <h1 style=" color:white; font-size:2vw; font-family:Comic Sans MS, cursive, sans-serif;" ><b>What Specie is your Iris Flower?</b></h1>
+        </div>
+        <div>
+            <h3 style=" color:beige; font-size:1vw; "><i>Implemented with a Machine Learning model</i></h3>
+        </div>
+<br>
+        <div style="text-align: left; height:400px; padding:300px; width:250px; border-style:solid; border-radius:25px; border-color:#3f4238; padding:20px;">
+            <form method="POST", action="{{url_for('predict')}}">
+                <label style="color: #bed49f; " for="title"><b>Supply your information to predict</b></label>
+                <hr>
+                <br>
+                <label for="sepallength" style="color: #b5cc95; font-family: Arial, Helvetica, sans-serif;"><b>Sepal Length</b></label>
+                <input style= "width:100%;padding: 12px 20px; margin:8px 0; box-sizing:border-box; border:3px solid #495737;transition:0.5s; outline:none;" name="sl" >
+                
+                <label for="sepalwidth" style="color: #b5cc95; font-family: Arial, Helvetica, sans-serif;" ><b>Sepal Width</b></label>
+                <input style= "width:100%;padding: 12px 20px; margin:8px 0; box-sizing:border-box; border:3px solid #495737;transition:0.5s; outline:none;" name="sw" >
+                
+                <label for="petallength" style="color: #b5cc95; font-family: Arial, Helvetica, sans-serif;" ><b>Petal Length</b></label>
+                <input style= "width:100%;padding: 12px 20px; margin:8px 0; box-sizing:border-box; border:3px solid #495737;transition:0.5s; outline:none;" name="pl" >
+                
+                <label for="petalwidth" style="color: #b5cc95; font-family: Arial, Helvetica, sans-serif;" ><b>Petal Width</b></label>
+                <input style= "width:100%;padding: 12px 20px; margin:8px 0; box-sizing:border-box; border:3px solid #495737;transition:0.5s; outline:none;" name="pw" >
+                <hr>
+                <input type="submit", value="Predict">
+              </form>
+            </div>
+    </body>
+
+</html>
