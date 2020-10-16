@@ -1,42 +1,136 @@
 <!DOCTYPE html>
-<html style="height: 100%;">
+<html>
+  <head>
+    <title>Predict your Iris specie</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
 
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="viewport" content="width=device-width"/>
-        <title>Predict your Iris specie</title>
-    </head>
+    <style>
+      html, body {
+      min-height: 100%;
+      }
+      body, div, form, input, select, p { 
+      padding: 0;
+      margin: 0;
+      outline: none;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 16px;
+      color: #eee;
+      }
+      body {
+      background: url("/static/img/background.jpg") no-repeat center;
+      background-size: cover;
+      }
+      h1, h2 {
+      text-transform: uppercase;
+      font-weight: 400;
+      }
+      h2 {
+      margin: 0 0 0 8px;
+      }
+      .main-block {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      padding: 25px;
+      background: rgba(0, 0, 0, 0.5); 
+      }
+      .left-part, form {
+      padding: 25px;
+      }
+      .left-part {
+      text-align: center;
+      }
+      .fa-flower{
+      font-size: 72px;
+      }
+      form {
+      background: rgba(0, 0, 0, 0.7); 
+      }
+      .title {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      }
+      .info {
+      display: flex;
+      flex-direction: column;
+      }
+      input, select {
+      padding: 5px;
+      margin-bottom: 30px;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #eee;
+      }
+      input::placeholder {
+      color: #eee;
+      }
+    
+      
+      .btn-item, button {
+      padding: 10px 5px;
+      margin-top: 20px;
+      border-radius: 5px; 
+      border: none;
+      background: #26a9e0; 
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 400;
+      color: #fff;
+      }
+      .btn-item {
+      display: inline-block;
+      margin: 20px 5px 0;
+      }
+      button {
+      width: 100%;
+      }
+      button:hover, .btn-item:hover {
+      background: #85d6de;
+      }
+      @media (min-width: 568px) {
+      html, body {
+      height: 100%;
+      }
+      .main-block {
+      flex-direction: row;
+      height: calc(100% - 50px);
+      }
+      .left-part, form {
+      flex: 1;
+      height: auto;
+      }
+      }
+    </style>
+  </head>
 
-<!-- .................................................................. -->
-    <body style="height:100%; background-image: url(/static/img/background.jpg); background-size:cover;background-repeat: no-repeat;background-position:center;">
-        <br>
-        <div>
-        <h1 style=" color:white; font-size:2vw; font-family:Comic Sans MS, cursive, sans-serif;" ><b>What Specie is your Iris Flower?</b></h1>
+  <body>
+    <div class="main-block">
+      <div class="left-part">
+        <i class="fas fa-flower"></i>
+        <h1>What Specie is your Iris flower?</h1>
+        <p>This ML model predicts the specie of an iris flower. The model has an accuracy of 97%.</p>
+        
+      </div>
+      <form method="POST" action="{{url_for('predict')}}">
+        <div class="title">
+          <i class="fas fa-pencil-alt"></i> 
+          <h2>Supply your information</h2>
         </div>
-        <div>
-            <h3 style=" color:beige; font-size:1vw; "><i>Implemented with a Machine Learning model</i></h3>
+        <div class="info">
+          <input class="fname" name="sl" placeholder="Sepal Length">
+          <input name="sw" placeholder="Sepal Width">
+          <input  name="pl" placeholder="Petal Length">
+          <input  name="pw" placeholder="Petal Width">
         </div>
-<br>
-        <div style="text-align: left; height:400px; padding:300px; width:250px; border-style:solid; border-radius:25px; border-color:#3f4238; padding:20px;">
-            <form method="POST", action="{{url_for('predict')}}">
-                <label style="color: #bed49f; " for="title"><b>Supply your information to predict</b></label>
-                <hr>
-                <br>
-                <label for="sepallength" style="color: #b5cc95; font-family: Arial, Helvetica, sans-serif;"><b>Sepal Length</b></label>
-                <input style= "width:100%;padding: 12px 20px; margin:8px 0; box-sizing:border-box; border:3px solid #495737;transition:0.5s; outline:none;" name="sl" >
-                
-                <label for="sepalwidth" style="color: #b5cc95; font-family: Arial, Helvetica, sans-serif;" ><b>Sepal Width</b></label>
-                <input style= "width:100%;padding: 12px 20px; margin:8px 0; box-sizing:border-box; border:3px solid #495737;transition:0.5s; outline:none;" name="sw" >
-                
-                <label for="petallength" style="color: #b5cc95; font-family: Arial, Helvetica, sans-serif;" ><b>Petal Length</b></label>
-                <input style= "width:100%;padding: 12px 20px; margin:8px 0; box-sizing:border-box; border:3px solid #495737;transition:0.5s; outline:none;" name="pl" >
-                
-                <label for="petalwidth" style="color: #b5cc95; font-family: Arial, Helvetica, sans-serif;" ><b>Petal Width</b></label>
-                <input style= "width:100%;padding: 12px 20px; margin:8px 0; box-sizing:border-box; border:3px solid #495737;transition:0.5s; outline:none;" name="pw" >
-                <hr>
-                <input type="submit", value="Predict">
-              </form>
-            </div>
-    </body>
-
+        
+        <button type="submit">Predict</button>
+      </form>
+    </div>
+  </body>
 </html>
