@@ -9,11 +9,7 @@ app = Flask(
     template_folder='template'
 )
 
-@app.route('/home')
-def home():
-    return render_template('index.html')
-
-@app.route('/form')
+@app.route('/')
 def form():
     return render_template('form.html')
 
